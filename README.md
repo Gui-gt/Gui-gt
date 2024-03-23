@@ -1,4 +1,10 @@
 ### Olá! me chamo Guilherme Henrique
+<a href="gui-gt">
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=gui-gt" />
+</a>
+<a href="https://github.com/Gui-gt">
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=gui-gt&layout=compact&langs_count=8&card_width=320" />
+</a>
 
 - 🔭 Hoje trabalho como Garçom
 - 🌱 no momento venho estudando front end js
