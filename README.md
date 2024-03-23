@@ -1,6 +1,6 @@
-### Olá, me chamo Guilherme Henrique 👋
+### Olá! me chamo Guilherme Henrique
 
-<!--
+
 **Gui-gt/Gui-gt** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
