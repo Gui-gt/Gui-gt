@@ -5,7 +5,7 @@
 
 
 
-- 🔭 Hoje trabalho como Garçom
+- 🔭 Trabalhos freelancer e projetos pessoais
 - 🌱 no momento venho estudando front end js
 - 📫 Contato para email: 30755guilherme@gmail.com
 
