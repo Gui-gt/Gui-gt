@@ -8,17 +8,16 @@ namespace Gestor_de_Clientes
 {
     public class Program
     {
+
         [System.Serializable]
         struct Cliente
         {
             public string nome;
             public string email;
             public string cpf;
-
         }
 
         static List<Cliente> clientes = new List<Cliente>();
-
 
         enum Menu { listar = 1, adicionar = 2, remover = 3, sair = 4}
         static void Main(string[] args)
@@ -39,7 +38,7 @@ namespace Gestor_de_Clientes
                         break;
 
                     case Menu.adicionar:
-                        adicionar();
+                        Adicionar();
                         break;
                        
 
@@ -54,29 +53,23 @@ namespace Gestor_de_Clientes
             }
         }
 
-        static void adicionar()
+        static void Adicionar()
         {
-            Cliente aa = new Cliente();
-            Console.WriteLine("Cadastro de cliente: ");
-           
+            Cliente cliente = new Cliente();
+
+            Console.WriteLine("Cadastro de clientes");
             Console.WriteLine("Nome do cliente: ");
-            aa.nome = Console.ReadLine();
-
+            cliente.nome = Console.ReadLine();
             Console.WriteLine("Email do cliente: ");
-            aa.email = Console.ReadLine();
-            
+            cliente.email = Console.ReadLine();
             Console.WriteLine("CPF do cliente: ");
-            aa.cpf = Console.ReadLine();
+            cliente.cpf = Console.ReadLine();
 
-            clientes.Add(aa);
+            clientes.Add(cliente);
 
-            Console.WriteLine("Cliente cadastrado com sucesso, aperte enter para sair");
+            Console.WriteLine("cliente cadastrado com sucesso, aperte enter para voltar ao menu");
             Console.ReadLine();
-
-
-
-
         }
-        
+ 
     }
 }
