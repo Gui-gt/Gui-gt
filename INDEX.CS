@@ -6,9 +6,21 @@ using System.Threading.Tasks;
 
 namespace Gestor_de_Clientes
 {
-    internal class Program
+    public class Program
     {
-        enum Menu { listar = 1, adicionar, remover, sair}
+        [System.Serializable]
+        struct Cliente
+        {
+            public string nome;
+            public string email;
+            public string cpf;
+
+        }
+
+        static List<Cliente> clientes = new List<Cliente>();
+
+
+        enum Menu { listar = 1, adicionar = 2, remover = 3, sair = 4}
         static void Main(string[] args)
         {
 
@@ -27,7 +39,9 @@ namespace Gestor_de_Clientes
                         break;
 
                     case Menu.adicionar:
+                        adicionar();
                         break;
+                       
 
                     case Menu.remover:
                         break;
@@ -38,6 +52,30 @@ namespace Gestor_de_Clientes
                 }
                 Console.Clear();
             }
+        }
+
+        static void adicionar()
+        {
+            Cliente aa = new Cliente();
+            Console.WriteLine("Cadastro de cliente: ");
+           
+            Console.WriteLine("Nome do cliente: ");
+            aa.nome = Console.ReadLine();
+
+            Console.WriteLine("Email do cliente: ");
+            aa.email = Console.ReadLine();
+            
+            Console.WriteLine("CPF do cliente: ");
+            aa.cpf = Console.ReadLine();
+
+            clientes.Add(aa);
+
+            Console.WriteLine("Cliente cadastrado com sucesso, aperte enter para sair");
+            Console.ReadLine();
+
+
+
+
         }
         
     }
