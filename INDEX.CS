@@ -4,47 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Gestor_de_Clientes
 {
     internal class Program
     {
-        struct Produto
-        {
-            public string nome;
-            public float preco;
-
-            public Produto(string nome, float preco)
-            {
-                this.nome = nome;
-                this.preco = preco;
-            }
-
-            public void ExibirInfo()
-            {
-                Console.WriteLine($"Nome: {nome}");
-                Console.WriteLine($"Nome: {preco}");
-            }
-
-            public float AddDesc(float porc)
-            {
-                float desconto = preco * porc / 100f;
-                return preco - desconto;
-            }
-        }
-
-
+        enum Menu { listar = 1, adicionar, remover, sair}
         static void Main(string[] args)
         {
 
-            Produto faca = new Produto("Faca", 100);
+            bool escolheuSair = false;
 
-            float vALORfINAL = faca.AddDesc(50F);
+            while (!escolheuSair) {
 
-            Console.WriteLine(vALORfINAL);
-            
+                Console.WriteLine("  Gestor de Clientes - Bem vindo");
+                Console.WriteLine("   1-listar\n   2-adicionar\n   3-remover\n   4-sair");
+                int intOp = int.Parse(Console.ReadLine());
+                Menu opcao = (Menu)intOp;
 
+                switch (opcao)
+                {
+                    case Menu.listar:
+                        break;
 
-            Console.ReadLine();
+                    case Menu.adicionar:
+                        break;
+
+                    case Menu.remover:
+                        break;
+
+                    case Menu.sair:
+                        escolheuSair = true;
+                        break;
+                }
+                Console.Clear();
+            }
         }
+        
     }
 }
