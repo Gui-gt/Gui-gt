@@ -650,3 +650,163 @@ namespace Gestor_de_Clientes
 }
 
 
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Gestor_de_Clientes2
+{
+    internal class Program
+    {
+        [System.Serializable]
+        struct Cliente
+        {
+            public string nome;
+            public string email;
+            public string cpf;
+        }
+
+       static List<Cliente> clientes = new List<Cliente>();
+
+
+        enum Menu {listagem = 1, adicionar, remover, sair };
+        
+        
+
+        static void Main(string[] args)   
+        {
+
+            Carregar();
+            bool escolheuSair = false;
+
+            while(!escolheuSair)
+            {
+                Console.WriteLine("<< Gestor de clientes 2.0 - Seja bem vindo >>");
+                Console.WriteLine("1-listagem\n2-adicionar\n3-remover\n4-sair");
+                int intOp = int.Parse(Console.ReadLine());
+                Menu opcao = (Menu)intOp;
+
+                switch (opcao)
+                {
+                    case Menu.listagem:
+                        Listagem();
+                  
+                        break;
+
+                    case Menu.adicionar:
+                        Adicionar();
+                        break;
+
+                    case Menu.remover:
+                        Remover();
+                        break;
+
+                    case Menu.sair:
+                        escolheuSair = true;
+                        break;
+                }
+                Console.WriteLine("aperte enter para voltar ao menu");
+                Console.Clear();
+            } 
+        }
+
+        static void Adicionar()
+        {
+
+            Cliente cliente = new Cliente();
+
+            Console.WriteLine($"Nome: {cliente.nome}");
+            cliente.nome = Console.ReadLine();
+
+            Console.WriteLine($"email:  {cliente.email}");
+            cliente.email = Console.ReadLine();
+
+            Console.WriteLine($"CPF: {cliente.cpf}");
+            cliente.cpf = Console.ReadLine();
+
+
+            clientes.Add(cliente);
+            Salvar();
+
+            Console.WriteLine("cliente cadastrado com sucesso, aperte enter para voltar para ao menu");
+            Console.ReadLine();
+
+        }
+
+        static void Listagem()
+        {
+            if(clientes.Count > 0)
+            {
+                Console.WriteLine("Listagem de clientes");
+                int i = 0;
+                foreach (Cliente cliente in clientes)
+                {
+
+                    Console.WriteLine($"ID: {i}");
+                    Console.WriteLine($"Nome: {cliente.nome}");
+                    Console.WriteLine($"email: {cliente.email}");
+                    Console.WriteLine($"cpf: {cliente.cpf}");
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("cliente inexistente, adicione clientes no menu");
+                Console.ReadLine();
+            }
+            Console.ReadLine();
+
+
+        }
+
+        static void Remover()
+        {
+            Listagem();
+            Console.WriteLine("digite o id do cliente que vc quer remover");
+            int id = int.Parse( Console.ReadLine());
+            if( id >= 0 && id < clientes.Count )
+            {
+                clientes.RemoveAt( id );    
+            }
+            Console.ReadLine();
+        }
+
+        static void Salvar()
+        {
+            FileStream stream = new FileStream("cll.dados", FileMode.OpenOrCreate);
+            BinaryFormatter encoder = new BinaryFormatter();
+
+            encoder.Serialize(stream, clientes);
+
+            stream.Close(); 
+        }
+
+        static void Carregar()
+        {
+            FileStream stream = new FileStream("cll.dados", FileMode.OpenOrCreate);
+            try
+            {
+
+                BinaryFormatter encoder = new BinaryFormatter();
+
+                clientes = (List<Cliente>)encoder.Deserialize(stream);
+
+                if (clientes == null)
+                {
+                    clientes = new List<Cliente>();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                clientes = new List<Cliente>();
+            }
+            stream.Close();
+        }
+    }
+}
